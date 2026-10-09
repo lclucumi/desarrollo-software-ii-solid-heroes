@@ -33,7 +33,7 @@ La idea central de la práctica es:
 
 ## 🎯 Objetivos
 
-Al finalizar la demostración podremos reconocer en código:
+Durante la demostración reconoceremos en código:
 
 | Principio | Pregunta que nos ayuda a hacer |
 |---|---|
@@ -43,9 +43,13 @@ Al finalizar la demostración podremos reconocer en código:
 | **I · Interface Segregation** | ¿Estamos obligando a alguien a depender de operaciones que no necesita? |
 | **D · Dependency Inversion** | ¿Dependemos de una implementación concreta o de la capacidad que realmente necesitamos? |
 
+Además, utilizaremos el mismo código para practicar un flujo de trabajo con:
+
+**Git · branches · commits · Pull Requests · Code Review**
+
 ---
 
-## 🦸 Nuestro ejemplo
+## 🦸 Nuestro punto de partida
 
 Comenzaremos con una representación muy sencilla:
 
@@ -60,7 +64,7 @@ SuperHero
 
 El código funciona.
 
-Pero durante la clase nos preguntaremos:
+Pero durante la clase nos haremos una pregunta importante:
 
 > **¿Qué ocurre cuando aparecen más héroes, más habilidades y nuevos requisitos?**
 
@@ -68,23 +72,40 @@ A partir de allí iremos evolucionando el diseño.
 
 ---
 
-## 🧩 Evolución durante la clase
+## 🧩 Evolución de las habilidades
 
-El proyecto crecerá progresivamente.
+Poco a poco llegaremos a una estructura en la que las habilidades pueden representarse mediante un contrato común:
 
 ```text
-SuperHero
-    │
-    └── Ability
-          │
-          ├── FlyAbility
-          ├── SuperStrength
-          └── Invisibility
+              Ability
+                 ↑
+        ┌────────┼───────────┐
+        │        │           │
+  FlyAbility  SuperStrength  Invisibility
 ```
 
-También utilizaremos pequeños ejemplos para analizar **L** e **I**.
+La idea será que `SuperHero` no necesite conocer cómo funciona internamente cada habilidad.
 
-Finalmente construiremos:
+Por ejemplo:
+
+```text
+Superman
+   │
+   ├── FlyAbility
+   └── SuperStrength
+```
+
+Así podremos preguntarnos:
+
+> **¿Qué necesita conocer realmente `SuperHero` y qué detalles podrían quedar separados?**
+
+---
+
+## 🛡️ Finalmente construiremos los Avengers
+
+También analizaremos cómo representar un equipo de héroes sin dejarlo atado a integrantes específicos.
+
+Llegaremos conceptualmente a algo como:
 
 ```text
                  Avenger
@@ -101,57 +122,91 @@ La pregunta será:
 
 > **¿Avengers necesita conocer específicamente a Iron Man, Hulk o Thor, o simplemente necesita miembros capaces de luchar?**
 
----
+### Respuesta
 
-## 💻 Tecnologías
+**Avengers no necesita conocer héroes concretos.**
 
-Para esta práctica utilizaremos únicamente:
+Lo que realmente necesita es trabajar con **miembros capaces de cumplir el contrato `Avenger`**.
 
-- **Java**
-- **Visual Studio Code**
-- **Git**
-- **GitHub**
+Por eso buscamos una relación como:
 
-No utilizaremos frameworks, bases de datos ni servicios externos.
-
----
-
-## ▶️ Ejecutar el proyecto
-
-Una vez descargado el repositorio, abrir una terminal en la raíz del proyecto.
-
-### 1 · Verificar Java
-
-```bash
-java --version
-javac --version
+```text
+Avengers
+   │
+   ↓
+Avenger
+   ↑
+   ├── IronMan
+   ├── Hulk
+   └── Thor
 ```
 
-### 2 · Compilar
+De esta forma, `Avengers` depende de la **capacidad que necesita** y no queda directamente acoplado a una implementación concreta.
 
-En macOS/Linux:
-
-```bash
-javac src/*.java
-```
-
-En Windows PowerShell:
-
-```powershell
-javac src\*.java
-```
-
-### 3 · Ejecutar
-
-```bash
-java -cp src Main
-```
+Esta idea nos ayudará a reconocer en código el principio de **Dependency Inversion (D)**.
 
 ---
 
-## 🌿 Git durante la demostración
+## 💻 ¿Cómo ejecutaremos el proyecto?
 
-Después de realizar nuestro cambio de diseño, utilizaremos el mismo proyecto para recorrer un flujo de trabajo con Git:
+Durante la clase trabajaremos en **Visual Studio Code**.
+
+No necesitaremos ejecutar comandos de compilación manualmente.
+
+### Paso 1 · Abrir el proyecto
+
+Abran la carpeta del proyecto en Visual Studio Code:
+
+```text
+File → Open Folder
+```
+
+y seleccionen la carpeta del repositorio.
+
+---
+
+### Paso 2 · Abrir `Main.java`
+
+En el panel **Explorer**, abran:
+
+```text
+src
+└── Main.java
+```
+
+`Main.java` será nuestro punto de entrada para ejecutar los ejemplos.
+
+---
+
+### Paso 3 · Ejecutar
+
+Sobre `Main.java`, utilicen la opción:
+
+```text
+Run
+```
+
+que aparece en Visual Studio Code.
+
+También puede aparecer como:
+
+```text
+Run Java
+```
+
+o mediante el botón ▶️ de ejecución.
+
+> **Si la opción `Run` no aparece o el programa no ejecuta, avisen antes de modificar la configuración del equipo.**
+
+Durante la clase iremos ejecutando varias veces para comprobar cómo cambia el comportamiento a medida que evoluciona el diseño.
+
+---
+
+## 🌿 Después gestionaremos el cambio con Git
+
+Una vez tengamos un cambio de código, veremos cómo gestionarlo sin trabajar directamente sobre `main`.
+
+Nuestro flujo será:
 
 ```text
 main
@@ -172,47 +227,175 @@ main
             merge
 ```
 
-La rama utilizada durante la demostración será:
-
-```text
-refactor/hero-abilities
-```
-
 ---
 
-## 🔧 Comandos que utilizaremos
+## 🌱 Branch
 
-Crear y cambiar a la rama:
+Crearemos una rama específica para nuestro cambio:
 
 ```bash
 git switch -c refactor/hero-abilities
 ```
 
-Revisar el estado:
+La idea es trabajar de forma aislada sin modificar directamente `main`.
+
+---
+
+## 🔎 Status
+
+Revisaremos el estado de nuestro trabajo:
 
 ```bash
 git status
 ```
 
-Preparar los cambios:
+Este comando nos permite observar, entre otras cosas:
+
+- en qué rama estamos;
+- qué archivos modificamos;
+- qué archivos todavía no están preparados;
+- qué cambios están listos para el próximo commit.
+
+---
+
+## 📦 Staging area
+
+Prepararemos los cambios que queremos registrar:
 
 ```bash
 git add .
 ```
 
-Crear el commit:
+Con esto agregamos los cambios al **staging area**.
+
+Podemos pensar el staging area como:
+
+> **la zona donde preparamos qué cambios queremos incluir en el próximo commit.**
+
+---
+
+## 📝 Commit
+
+Crearemos un registro del cambio:
 
 ```bash
 git commit -m "refactor hero abilities"
 ```
 
-Publicar la rama:
+Un commit debería representar un cambio coherente y tener un mensaje que ayude a entender qué ocurrió.
+
+Por ejemplo:
+
+```text
+❌ cambios
+❌ fix
+❌ ahora sí
+
+✅ refactor hero abilities
+```
+
+---
+
+## ☁️ Push
+
+Publicaremos nuestra rama en GitHub:
 
 ```bash
 git push -u origin refactor/hero-abilities
 ```
 
-Después continuaremos el flujo mediante **Pull Request y Code Review en GitHub**.
+Aquí:
+
+- `push` envía nuestros commits al repositorio remoto;
+- `origin` es el nombre habitual del repositorio remoto;
+- `-u` vincula nuestra rama local con la rama remota.
+
+Después del primer `push`, normalmente podremos utilizar simplemente:
+
+```bash
+git push
+```
+
+para enviar nuevos commits de esa misma rama.
+
+---
+
+## 🔀 Pull Request
+
+Una vez publicada la rama, utilizaremos GitHub para crear un **Pull Request**.
+
+Conceptualmente:
+
+```text
+refactor/hero-abilities
+          │
+          ↓
+    Pull Request
+          │
+          ↓
+        main
+```
+
+Un Pull Request no significa:
+
+> “mi código ya debe integrarse”.
+
+Significa:
+
+> **“Propongo este cambio para que pueda ser revisado antes de integrarlo.”**
+
+---
+
+## 👀 Code Review
+
+Revisaremos el cambio antes de integrarlo.
+
+Durante un Code Review podemos preguntarnos:
+
+- ¿el cambio resuelve el problema?
+- ¿las responsabilidades son claras?
+- ¿aumentamos innecesariamente el acoplamiento?
+- ¿la abstracción tiene sentido?
+- ¿hay casos que no consideramos?
+- ¿el código puede entenderse fácilmente?
+
+Un comentario útil no sería:
+
+> ❌ “Esto está mal.”
+
+Podría ser:
+
+> ✅ “Esta clase todavía depende directamente de una implementación concreta. ¿Podríamos depender del contrato correspondiente? ¿Qué beneficio tendría en este caso?”
+
+La intención del Code Review es **discutir técnicamente el cambio**, no evaluar a la persona que lo escribió.
+
+---
+
+## 🔄 El flujo completo
+
+Al finalizar habremos recorrido:
+
+```text
+Código
+  ↓
+Branch
+  ↓
+Cambios
+  ↓
+Staging area
+  ↓
+Commit
+  ↓
+Push
+  ↓
+Pull Request
+  ↓
+Code Review
+  ↓
+Ajustes
+  ↓
+Merge
+```
 
 ---
 
@@ -222,15 +405,23 @@ Después continuaremos el flujo mediante **Pull Request y Code Review en GitHub*
 
 ### Que el código funcione es necesario, pero no siempre es suficiente.
 
-Un buen diseño también busca que el software sea:
+También queremos que sea:
 
 **comprensible · mantenible · extensible · testeable**
 
+<br>
+
+Y cuando trabajamos en equipo, también necesitamos:
+
+**registrar · comunicar · revisar · integrar**
+
 </div>
+
+---
 
 <div align="center">
 
-### 🧠 La pregunta que guiará toda la clase
+### 🧠 La pregunta que guiará nuestra práctica
 
 ## ¿Qué cambio es difícil en este código y por qué?
 
