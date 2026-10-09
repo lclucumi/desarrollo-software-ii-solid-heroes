@@ -401,8 +401,6 @@ Merge
 
 ## 💡 Idea central
 
-<div align="center">
-
 ### Que el código funcione es necesario, pero no siempre es suficiente.
 
 También queremos que sea:
@@ -415,15 +413,13 @@ Y cuando trabajamos en equipo, también necesitamos:
 
 **registrar · comunicar · revisar · integrar**
 
-</div>
-
 ---
 
+### La pregunta que guiará nuestra práctica
+
+### ¿Qué cambio es difícil en este código y por qué?
+
 <div align="center">
-
-### 🧠 La pregunta que guiará nuestra práctica
-
-## ¿Qué cambio es difícil en este código y por qué?
 
 ---
 
