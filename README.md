@@ -1,5 +1,3 @@
-<div align="center">
-
 # 🎓 Universidad del Valle
 
 ### Desarrollo de Software II · Grupo 51
@@ -16,8 +14,6 @@
 **Docente:** Luz Carime Lucumí Hernández  
 **Asignatura:** Desarrollo de Software II  
 **Universidad del Valle · 2026-2**
-
-</div>
 
 ---
 
