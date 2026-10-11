@@ -1,3 +1,4 @@
+package examples.lsp;
 /*
  * ============================================================
  * Archivo: FlyingHero.java
