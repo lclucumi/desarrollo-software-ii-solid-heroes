@@ -88,7 +88,7 @@ public class Main {
          * descomentarlas.
          */
 
-        // FlyingHero hero = new SpiderMan();
+        // FlyingHero hero = new Spiderman();
         // hero.fly();
 
         // ====================================================
