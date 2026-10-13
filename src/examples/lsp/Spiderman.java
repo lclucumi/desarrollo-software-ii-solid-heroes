@@ -1,7 +1,7 @@
 package examples.lsp;
 /*
  * ============================================================
- * Archivo: SpiderMan.java
+ * Archivo: Spiderman.java
  * ============================================================
  *
  * SpiderMan hereda de FlyingHero.
