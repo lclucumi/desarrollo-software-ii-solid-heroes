@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * Archivo: Ability.java
@@ -23,3 +24,4 @@ public interface Ability {
      */
     void use();
 }
+

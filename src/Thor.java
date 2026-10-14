@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * Archivo: Thor.java
@@ -25,4 +26,5 @@ public class Thor implements Avenger {
     public void fight() {
         System.out.println("Thor pelea");
     }
+
 }

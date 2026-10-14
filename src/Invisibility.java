@@ -32,6 +32,6 @@ public class Invisibility implements Ability {
      */
     @Override
     public void use() {
-        System.out.println("Invisible");
+        System.out.println("Invisibilidad");
     }
 }

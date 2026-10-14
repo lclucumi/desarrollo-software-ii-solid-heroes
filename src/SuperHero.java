@@ -1,5 +1,6 @@
 import java.util.List;
 
+
 /*
  * ============================================================
  * Archivo: SuperHero.java
@@ -17,14 +18,15 @@ import java.util.List;
  * y facilita agregar nuevas habilidades (O).
  */
 
-public class SuperHero {
 
+public class SuperHero {
+    
     /*
      * Nombre del superhéroe.
      */
     private String name;
 
-    /*
+      /*
      * Lista con las habilidades que posee el superhéroe.
      *
      * No almacenamos clases concretas como FlyAbility
@@ -34,13 +36,14 @@ public class SuperHero {
     private List<Ability> abilities;
 
     /*
-     * El constructor recibe el nombre del héroe
-     * y las habilidades que tendrá.
+     * Constructor de SuperHero.
+     *
+     * Recibe las habilidades desde afuera en lugar de crearlas
+     * aquí dentro, así SuperHero no depende de clases concretas
+     * como FlyAbility o SuperStrength.
      */
-    public SuperHero(
-            String name,
-            List<Ability> abilities
-    ) {
+
+    public SuperHero(String name, List<Ability> abilities) {
         this.name = name;
         this.abilities = abilities;
     }
@@ -49,17 +52,18 @@ public class SuperHero {
      * Recorre todas las habilidades del superhéroe
      * y ejecuta cada una de ellas.
      */
-    public void useAbilities() {
 
-        System.out.println(name + " usa sus habilidades:");
+    public void useAbility() {
+
+        System.out.println(name + " usando sus habilidades");
 
         /*
          * Este ciclo recorre cada elemento
          * almacenado en la lista abilities.
          */
         for (Ability ability : abilities) {
-
-            /*
+           
+             /*
              * No importa cuál sea la habilidad concreta.
              * Mientras cumpla el contrato Ability,
              * podrá utilizarse.

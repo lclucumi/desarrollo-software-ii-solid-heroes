@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * Archivo: Avenger.java
@@ -31,3 +32,4 @@ public interface Avenger {
      */
     void fight();
 }
+

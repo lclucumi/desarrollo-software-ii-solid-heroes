@@ -72,7 +72,7 @@ public class Main {
          * el contrato Ability.
          */
 
-        superman.useAbilities();
+        superman.useAbility();
 
         System.out.println();
 

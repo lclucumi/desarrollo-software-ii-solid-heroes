@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * Archivo: SuperStrength.java
@@ -30,6 +31,7 @@ public class SuperStrength implements Ability {
      */
     @Override
     public void use() {
-        System.out.println("Superfuerza");
+        System.out.println("usando super fuerza");
     }
 }
+
