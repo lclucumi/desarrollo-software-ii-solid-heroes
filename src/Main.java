@@ -108,7 +108,9 @@ public class Main {
                 List.of(
                         new IronMan(),
                         new Hulk(),
-                        new Thor()
+                        new Thor(),
+                        new BlackPanther(),
+                        new CaptainAmerica()
                 )
         );
 
