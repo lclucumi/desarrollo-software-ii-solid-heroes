@@ -31,6 +31,6 @@ public class Hulk implements Avenger {
      */
     @Override
     public void fight() {
-        System.out.println("Hulk pelea");
+        System.out.println("Hulk pelea con fuerza bruta");
     }
 }
