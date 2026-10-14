@@ -109,7 +109,8 @@ public class Main {
                         new IronMan(),
                         new Hulk(),
                         new Thor(),
-                        new BlackPanther()
+                        new BlackPanther(),
+                        new CaptainAmerica()
                 )
         );
 
